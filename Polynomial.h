@@ -10,7 +10,6 @@
  * 说明：
  * 可以调用本头文件中的getData(), setData()两个函数，以及iteratorResult()迭代器来完成多项式的运算。
  * 函数用法见注释。 
- * 函数前面带有private字样的最好不要调用。 
  * 退出前请调用freeAll()函数。  
  */ 
 typedef struct Monomial
@@ -54,6 +53,9 @@ void freePolynomial(Polynomial *p);
 List newPolynomial();
 char* printResult(List header);
 
+/**
+  * 打印结果
+  */
 char* printResult(List l)
 {
 	IteratorResult* p = createEmptyIteratorResult();
@@ -112,6 +114,7 @@ char* printResult(List l)
 		flag = 1;
 		boolean = iteratorResult(FALSE, l, p);
 	}
+	printf("\n");
 }
 
 /**
@@ -120,7 +123,8 @@ char* printResult(List l)
   */
 List newPolynomial()
 {
-	return createPolynomial(0); 
+	List L1 = createPolynomial(0);
+	return setData(L1, 0, 0, 0);
 }
  
 /**
@@ -168,7 +172,6 @@ IteratorResult* createEmptyIteratorResult()
   * @param last 上一次迭代的结果 
   * @return 迭代到底或者参数错误返回假，否则返回真 
   */
-  
 int iteratorResult(int init, List header, IteratorResult* last)
 {
 	Polynomial* p1;
@@ -372,27 +375,4 @@ void freeAll(List header)
 	p -> data = data;
 	p -> next = NULL; 
 	return p;
-}
-
-int main(void)
-{
-	List l = newPolynomial();
-
-	l = setData(l, -2.3, 2, 5);
-	l = setData(l, -1, 0, 0);
-	l = setData(l, 1.1, 7, 0);
-	/*
-	printf("%lf  %lf   %lf\n", getData(l, 2,5), getData(l, 4, 6), getData(l, 0, 0));
-	IteratorResult* p = createEmptyIteratorResult();
-	iteratorResult(TRUE, l, p);
-	int boolean = TRUE; 
-	while(boolean)
-	{
-		printf("%d %d %lf\n", p -> x_degree, 
-			p -> y_degree, p -> data);
-		boolean = iteratorResult(FALSE, l, p);
-	}*/
-	printResult(l);
-	freeAll(l);
-	
 }
