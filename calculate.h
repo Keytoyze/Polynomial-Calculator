@@ -1,9 +1,3 @@
-#include "Polynomial.h" 
-List add(List L1, List L2);
-List sub(List L1, List L2);
-List multiply(List L1, List L2);
-List copy(List L);
-
 List add(List L1, List L2)
 {
 	IteratorResult* p2 = createEmptyIteratorResult();
