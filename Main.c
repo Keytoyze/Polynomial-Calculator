@@ -26,7 +26,7 @@ int main(void)
 {
 
 	char str[60];
-	int op;
+	int op, i;
 	do
 	{
 		printf("==============================\n\       二元多项式计算器\n==============================\n\n");
@@ -49,6 +49,10 @@ int main(void)
 			case 5:
 				Output(); break;
 			default:
+				for (i = 0; i < N; i++)
+				{
+					freeAll(lists[i]);
+				}
 				exit(0);
 		}
 		wait();
