@@ -1,8 +1,32 @@
 void processPolynomial(List* L, char* str)
 {
-	int i = 0, j = 0;
+	int i, j = 0;
 	char monomial[1024] = "";
 	char* p = str;
+	List temp;
+	for (i = 0; str[i]; i++)
+	{
+		monomial[j++] = str[i];
+		if ((str[i] == '+' || str[i] == '-') && i != 0)
+		{
+			monomial[j-1] = '\0';
+			temp = newPolynomial();
+			processMonomial(&temp, monomial);
+			*L = add(*L, temp);
+			freeAll(temp);
+			monomial[0] = str[i];
+			j = 1;
+		}
+	}
+	if (j >= 1) {
+		monomial[j] = '\0';
+		temp = newPolynomial();
+		processMonomial(&temp, monomial);
+		*L = add(*L, temp);
+		freeAll(temp);
+	}
+	/*
+	i = 0;
 	List temp;
 	while (*p)
 	{
@@ -10,7 +34,7 @@ void processPolynomial(List* L, char* str)
 		p = processMonomial(&temp, p);
 		*L = add(*L, temp);
 		freeAll(temp);
-	}
+	}*/
 }
 
 char* processMonomial(List* L, char* str)
