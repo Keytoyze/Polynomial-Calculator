@@ -48,12 +48,15 @@ int main(void)
 				Mul();break;
 			case 5:
 				Output(); break;
-			default:
+			case 0:
 				for (i = 0; i < N; i++)
 				{
 					freeAll(lists[i]);
 				}
 				exit(0);
+			default:
+				printf("输入错误。\n");
+				break;
 		}
 		wait();
 		system("cls");
@@ -146,9 +149,8 @@ void printInputHint()
 
 void wait()
 {
-	int a;
-	printf("\n输入任意数字返回。");
-	scanf("%d", &a);
+	printf("\n");
+	system("pause");
 } 
 
 void Mul()
