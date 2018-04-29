@@ -1,15 +1,9 @@
+// 主体程序 
 #include "Header.h"
 #include "Polynomial.h"
 #include "IO.h"
 #include "Calculate.h"
 
-/*
-要求：1）实现一个可以交互控制台风格的界面；
-	  2）程序界面显示一个菜单，选择操作序号1-多项式输入；2-多项式加（+）；3-多项式减（-）；3-多项式乘（*）；4-多项式输出；0-退出；以调用相应函数完成具体相应操作；
-3）输出格式按照次幂的大小从高到低输出多项式；
-4）模块化设计，程序结构清晰，注释清楚；
-5）编写详细的设计与实现文档。
-*/
 void printMenu();
 void Input();
 void Add();
@@ -63,6 +57,7 @@ int main(void)
 	} while (TRUE);
 }
 
+//输出操作界面主菜单*  
 void printMenu()
 {
 	printf("    [1] 多项式输入\n");
@@ -73,6 +68,7 @@ void printMenu()
 	printf("    [0] 退出\n");
 }
 
+//操作[1] 多项式的输入  
 void Input()
 {
 	printf("请输入一个多项式，每一项格式为(+/-)a*x^p*y^q。其中a, ^p, ^q, *, x, y均可省略。\n");
@@ -87,6 +83,7 @@ void Input()
 	N++;
 }
 
+//操作[2] 多项式加法 让两个多项式相加但可以自己选择是哪两个多项式 
 void Add()
 {
 	int a, b;
@@ -108,6 +105,7 @@ void Add()
 	
 }
 
+//操作[3] 多项式减法 前一个减后一个  
 void Sub()
 {
 	int a, b;
@@ -128,6 +126,7 @@ void Sub()
 	N++;
 }
 
+//输出已储存的多项式   
 void Output()
 {
 	int a, i;
@@ -147,12 +146,14 @@ void printInputHint()
 	printf(">>>> ");
 }
 
+//每一次操作结束的提示
 void wait()
 {
 	printf("\n");
 	system("pause");
 } 
 
+//操作[4] 多项式乘法 将选定的两个多项式相乘   
 void Mul()
 {
 	int a, b;
